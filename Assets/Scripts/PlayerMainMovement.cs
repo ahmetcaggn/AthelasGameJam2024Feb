@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMainMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public float movementSpeed = 5f;
     public float movementMaxSpeed = 5f;
     
@@ -48,7 +48,7 @@ public class PlayerMainMovement : MonoBehaviour
     }
 
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.7f, GroundLayer);
         return colliders;
