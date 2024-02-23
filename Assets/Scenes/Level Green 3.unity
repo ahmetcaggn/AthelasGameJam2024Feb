@@ -442,8 +442,8 @@ GameObject:
   - component: {fileID: 1437313945}
   - component: {fileID: 1437313944}
   - component: {fileID: 1437313948}
+  - component: {fileID: 1437313950}
   - component: {fileID: 1437313949}
-  - component: {fileID: 1437313948}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -600,11 +600,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437313943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eeecef9c638b304380a5ed0039de18a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e82d07c8b31ce648a261e9b1d674ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1437313944}
-  tr: {fileID: 1437313949}
+  movementSpeed: 50
+  movementMaxSpeed: 5
+  isFacingRight: 1
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  GroundCheck: {fileID: 1437313947}
+  jumpSpeed: 18
 --- !u!96 &1437313949
 TrailRenderer:
   serializedVersion: 3
@@ -646,7 +652,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: 0
   m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -665,7 +671,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.997076
+        time: 0.99338377
         value: 0
         inSlope: 0
         outSlope: 0
@@ -703,7 +709,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -718,7 +724,7 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &1437313948
+--- !u!114 &1437313950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,17 +733,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437313943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e82d07c8b31ce648a261e9b1d674ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eeecef9c638b304380a5ed0039de18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 50
-  movementMaxSpeed: 5
-  isFacingRight: 1
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 16
-  GroundCheck: {fileID: 1437313947}
-  jumpSpeed: 18
+  rb: {fileID: 1437313944}
+  dashingPower: 15
+  tr: {fileID: 1437313949}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
