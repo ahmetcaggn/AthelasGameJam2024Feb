@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorButton : MonoBehaviour
 {
@@ -15,5 +16,11 @@ public class DoorButton : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         doorScript.Open();
+        Invoke("changeSceneToCutscene", 1f);
+    }
+
+    private void changeSceneToCutscene()
+    {
+        SceneManager.LoadScene("Cutscene");
     }
 }
