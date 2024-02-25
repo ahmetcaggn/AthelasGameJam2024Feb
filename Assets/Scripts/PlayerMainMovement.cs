@@ -37,6 +37,16 @@ public class PlayerMainMovement : MonoBehaviour
             // anim.SetBool("IsJumping", true);
         }
 
+        if (rb.velocity.y < -2)
+        {
+            anim.SetBool("IsFalling",true);
+        }
+
+        // if (IsGrounded())
+        // {
+        //     anim.SetBool("IsFalling",false);
+        // }
+
         // if (IsGrounded())
         // {
         //     anim.SetBool("IsJumping", false);
@@ -60,6 +70,8 @@ public class PlayerMainMovement : MonoBehaviour
     public bool IsGrounded()
     {
         Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+        anim.SetBool("IsFalling",false);
+        anim.SetBool("IsJumping", false);
         return colliders;
     }
     
@@ -102,6 +114,34 @@ public class PlayerMainMovement : MonoBehaviour
         //         Debug.Log("Current health is: " + health);
         //     }
         // }
+    }
+    
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "collider")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider1")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider2")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider3")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider4")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider5")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
     }
     
     
