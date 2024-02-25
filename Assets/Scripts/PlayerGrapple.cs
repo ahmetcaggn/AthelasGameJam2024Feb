@@ -4,7 +4,7 @@ using UnityEngine;
 public class GrappleHook : MonoBehaviour
 {
     // Maximum distance the grapple can reach.
-    public float maxDistance = 2.8f;
+    public float maxDistance = 3.5f;
     // Minimum distance for the grapple.
     public float minDistance = 0.5f;
     // Speed at which the grapple retracts.
