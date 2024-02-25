@@ -50,7 +50,7 @@ public class PlayerMainMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 1.3f, GroundLayer);
         return colliders;
     }
     

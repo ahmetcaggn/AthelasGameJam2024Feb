@@ -23,11 +23,10 @@ public class CauldronController : MonoBehaviour
         sceneCount = sceneCount + 1; //a static variable to store this scene is opened how much
         audioSourceBlup = GetComponent<AudioSource>();
         DisableAllGameObjects(); //disables all items when the scene is opened
-        sceneNames.Add("Level Green 3");
+        //sceneNames.Add("Level Green 3");
         sceneNames.Add("Level Red 2");
         sceneNames.Add("Level Blue 4");
         sceneNames.Add("End");
-        abilityNames.Add("Now you have double jump! Try pressing - Space -");
         abilityNames.Add("Now you have Dash! Try pressing - Left Shift -");
         abilityNames.Add("Now you have Grappling! Try pressing - Left Mouse Button -(Please ensure that the cursor is on the right object)");
     }
@@ -48,10 +47,10 @@ public class CauldronController : MonoBehaviour
                 gameObjects[2].SetActive(true);
                 Invoke("LoadScene", 6f);
                 break;
-            case 4:
-                gameObjects[3].SetActive(true);
-                Invoke("LoadScene", 6f);
-                break;
+            //case 4:
+            //    gameObjects[3].SetActive(true);
+            //    Invoke("LoadScene", 6f);
+            //    break;
         }
     }
 
