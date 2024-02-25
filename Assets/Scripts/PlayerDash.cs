@@ -51,7 +51,7 @@ public class PlayerDash : MonoBehaviour
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
+        //rb.gravityScale = 0f;
         //rb.AddForce(new Vector2(CurrentDirection() * dashingPower, 0), ForceMode2D.Force); 
         rb.velocity = new Vector2(transform.localScale.x * dashingPower * CurrentDirection(), 0f);
         tr.emitting = true;
