@@ -24,10 +24,10 @@ public class CauldronController : MonoBehaviour
         audioSourceBlup = GetComponent<AudioSource>();
         DisableAllGameObjects(); //disables all items when the scene is opened
         //sceneNames.Add("Level Green 3");
-        sceneNames.Add("Level Red 2");
+        sceneNames.Add("red deneme");
         sceneNames.Add("Level Blue 4");
         sceneNames.Add("End");
-        abilityNames.Add("Now you have Dash! Try pressing - Left Shift -");
+        abilityNames.Add("Now you will be go color - RED -");
         abilityNames.Add("Now you have Grappling! Try pressing - Left Mouse Button -(Please ensure that the cursor is on the right object)");
     }
 
