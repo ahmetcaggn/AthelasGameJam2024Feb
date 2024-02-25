@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,16 +12,24 @@ public class CauldronController : MonoBehaviour
     public List<GameObject> gameObjects = new List<GameObject>(); //A list which stores items
     private static int sceneCount;
     private List<string> sceneNames = new List<string>();
+    private List<string> abilityNames = new List<string>();
+    Animator animator;
+    public TMP_Text achive;
 
     private void Start()
     {
+        
+        animator = GetComponent<Animator>();
         sceneCount = sceneCount + 1; //a static variable to store this scene is opened how much
         audioSourceBlup = GetComponent<AudioSource>();
         DisableAllGameObjects(); //disables all items when the scene is opened
-        sceneNames.Add("Level Red 2");
         sceneNames.Add("Level Green 3");
+        sceneNames.Add("Level Red 2");
         sceneNames.Add("Level Blue 4");
         sceneNames.Add("End");
+        abilityNames.Add("Now you have double jump! Try pressing - Space -");
+        abilityNames.Add("Now you have Dash! Try pressing - Left Shift -");
+        abilityNames.Add("Now you have Grappling! Try pressing - Left Mouse Button -(Please ensure that the cursor is on the right object)");
     }
 
     private void Update()
@@ -29,19 +38,19 @@ public class CauldronController : MonoBehaviour
         {
             case 1:
                 gameObjects[0].SetActive(true);
-                Invoke("LoadScene", 2f);
+                Invoke("LoadScene", 6f);
                 break;
             case 2:
                 gameObjects[1].SetActive(true);
-                Invoke("LoadScene", 2f);
+                Invoke("LoadScene", 6f);
                 break;
             case 3:
                 gameObjects[2].SetActive(true);
-                Invoke("LoadScene", 2f);
+                Invoke("LoadScene", 6f);
                 break;
             case 4:
                 gameObjects[3].SetActive(true);
-                Invoke("LoadScene", 2f);
+                Invoke("LoadScene", 6f);
                 break;
         }
     }
@@ -49,6 +58,10 @@ public class CauldronController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         audioSourceBlup.Play();
+        animator.SetTrigger("Cauldron");
+        gameObjects[sceneCount - 1].SetActive(false);
+        Invoke("WriteAbilityNames", 3f);
+        achive.text = abilityNames[sceneCount - 1];
     }
 
     private void DisableAllGameObjects()
@@ -62,5 +75,9 @@ public class CauldronController : MonoBehaviour
     private void LoadScene()
     {
         SceneManager.LoadScene(sceneNames[sceneCount-1]);
+    }
+    private void WriteAbilityNames()
+    {
+        achive.text = abilityNames[sceneCount - 1];
     }
 }
