@@ -16,6 +16,8 @@ public class PlayerMainMovement : MonoBehaviour
     public Transform GroundCheck;
     public float jumpSpeed = 18f;
 
+    public Animator anim;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,6 +26,7 @@ public class PlayerMainMovement : MonoBehaviour
     private void Update()
     {
         Horizontal = Input.GetAxis("Horizontal");
+        anim.SetFloat("SpeedX",Math.Abs(Horizontal));
         flip();
 
         //jump
@@ -31,7 +34,13 @@ public class PlayerMainMovement : MonoBehaviour
         {
             // myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpSpeed);
             rb.AddForce(new Vector2(0f, 10f * jumpSpeed));
+            // anim.SetBool("IsJumping", true);
         }
+
+        // if (IsGrounded())
+        // {
+        //     anim.SetBool("IsJumping", false);
+        // }
     }
 
     private void FixedUpdate()
@@ -50,7 +59,7 @@ public class PlayerMainMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 1.3f, GroundLayer);
+        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
         return colliders;
     }
     
