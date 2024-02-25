@@ -116,6 +116,34 @@ public class PlayerMainMovement : MonoBehaviour
         // }
     }
     
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "collider")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider1")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider2")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider3")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider4")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+        if (col.gameObject.name == "collider5")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }
+    }
+    
     
     
 }
