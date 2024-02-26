@@ -145,6 +145,13 @@ public class PlayerMainMovement : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
         }
+        
+        
+        
+        if (col.gameObject.name == "berry")
+        {
+            Destroy(col.gameObject);
+        }
     }
     
     
