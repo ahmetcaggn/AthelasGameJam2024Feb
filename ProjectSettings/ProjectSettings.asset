@@ -776,7 +776,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -796,11 +802,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 297346ac-4d65-49a9-88bf-f75dcc02055d
+  cloudProjectId: 5e6d1542-c676-4b2d-b10b-c9f33c025293
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: SauGameJam24
-  organizationId: lejonx
+  organizationId: demirhan-y-lal
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
