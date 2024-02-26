@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMainMovement : MonoBehaviour
 {
@@ -18,9 +20,13 @@ public class PlayerMainMovement : MonoBehaviour
 
     public Animator anim;
 
+    public Volume volume;
+    private ColorAdjustments _colorAdjustments;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        volume.profile.TryGet(out _colorAdjustments);
     }
 
     private void Update()
@@ -122,28 +128,16 @@ public class PlayerMainMovement : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
         }
-        if (col.gameObject.name == "collider1")
+        
+        
+        
+        if (col.gameObject.name == "berry")
         {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
-        }
-        if (col.gameObject.name == "collider2")
-        {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
-        }
-        if (col.gameObject.name == "collider3")
-        {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
-        }
-        if (col.gameObject.name == "collider4")
-        {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
-        }
-        if (col.gameObject.name == "collider5")
-        {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
-        }if (col.gameObject.name == "collider6")
-        {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+            if (_colorAdjustments.saturation.value < 100)
+            {
+                _colorAdjustments.saturation.value += 20;   
+            }
+            Destroy(col.gameObject);
         }
     }
     
