@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMainMovement : MonoBehaviour
 {
@@ -18,9 +20,13 @@ public class PlayerMainMovement : MonoBehaviour
 
     public Animator anim;
 
+    public Volume volume;
+    private ColorAdjustments _colorAdjustments;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        volume.profile.TryGet(out _colorAdjustments);
     }
 
     private void Update()
@@ -150,6 +156,10 @@ public class PlayerMainMovement : MonoBehaviour
         
         if (col.gameObject.name == "berry")
         {
+            if (_colorAdjustments.saturation.value < 100)
+            {
+                _colorAdjustments.saturation.value += 20;   
+            }
             Destroy(col.gameObject);
         }
     }
