@@ -141,6 +141,9 @@ public class PlayerMainMovement : MonoBehaviour
         if (col.gameObject.name == "collider5")
         {
             gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+        }if (col.gameObject.name == "collider6")
+        {
+            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
         }
     }
     
