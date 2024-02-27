@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerMainMovement : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class PlayerMainMovement : MonoBehaviour
         flip();
 
         //jump
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() || Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
             // myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpSpeed);
             rb.AddForce(new Vector2(0f, 10f * jumpSpeed));
@@ -75,7 +76,7 @@ public class PlayerMainMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.3f, GroundLayer);
         anim.SetBool("IsFalling",false);
         anim.SetBool("IsJumping", false);
         return colliders;
@@ -124,18 +125,19 @@ public class PlayerMainMovement : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name == "collider")
+        if (col.gameObject.name == "collider" || col.gameObject.layer == 6)
         {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+            // gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
         
         
         if (col.gameObject.name == "berry")
         {
-            if (_colorAdjustments.saturation.value < 100)
+            if (_colorAdjustments.saturation.value < 200)
             {
-                _colorAdjustments.saturation.value += 20;   
+                _colorAdjustments.saturation.value += 35;   
             }
             Destroy(col.gameObject);
         }
