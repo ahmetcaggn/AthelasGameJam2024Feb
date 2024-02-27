@@ -125,19 +125,19 @@ public class PlayerMainMovement : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name == "collider")
+        if (col.gameObject.name == "collider" || col.gameObject.layer == 6)
         {
             // gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
-            SceneManager.LoadScene("Deneme");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
         
         
         if (col.gameObject.name == "berry")
         {
-            if (_colorAdjustments.saturation.value < 100)
+            if (_colorAdjustments.saturation.value < 200)
             {
-                _colorAdjustments.saturation.value += 20;   
+                _colorAdjustments.saturation.value += 35;   
             }
             Destroy(col.gameObject);
         }
