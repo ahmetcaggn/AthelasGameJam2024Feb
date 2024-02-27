@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerMainMovement : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class PlayerMainMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+        Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.3f, GroundLayer);
         anim.SetBool("IsFalling",false);
         anim.SetBool("IsJumping", false);
         return colliders;
@@ -126,7 +127,8 @@ public class PlayerMainMovement : MonoBehaviour
     {
         if (col.gameObject.name == "collider")
         {
-            gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+            // gameObject.transform.position = new Vector3(15.65f, 8.29f, 0f);
+            SceneManager.LoadScene("Deneme");
         }
         
         
