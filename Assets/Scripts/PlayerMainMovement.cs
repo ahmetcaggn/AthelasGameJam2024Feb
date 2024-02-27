@@ -37,7 +37,7 @@ public class PlayerMainMovement : MonoBehaviour
         flip();
 
         //jump
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() || Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
             // myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpSpeed);
             rb.AddForce(new Vector2(0f, 10f * jumpSpeed));
