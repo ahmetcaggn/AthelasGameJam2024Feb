@@ -25,10 +25,12 @@ public class PlayerDashV2 : MonoBehaviour
     [SerializeField] private float animSpeedRatio = 0.671428f;
     private float animSpeed;
 
+    [SerializeField] private ParticleSystem _particleSystem;
     // Initialization
     private void Start()
     {
         _distanceJoint.enabled = false; // Disable DistanceJoint2D at start
+        
     }
 
     // Update is called once per frame
@@ -42,6 +44,8 @@ public class PlayerDashV2 : MonoBehaviour
             if (hit.collider != null)
             {
                 target = hit.point; // Set the target position if an object is hit
+                _particleSystem.transform.position = hit.point;
+                _particleSystem.transform.position = hit.point;
                 isGrappling = true; // Set grappling state to true
                 _lineRenderer.enabled = true; // Enable LineRenderer for rope visualization
                 ropeVector = (Vector3)target - transform.position; // Calculate rope vector
@@ -50,6 +54,7 @@ public class PlayerDashV2 : MonoBehaviour
                 if (ropeLength > 4f) { animSpeed = ropeLength * animSpeedRatio; }
                 else { animSpeed = ropeLength * animSpeedRatio + ropeLength; }
                 StartCoroutine(AnimateRope(target)); // Start animating the rope towards the target
+                _particleSystem.Play();
             }
         }
 
