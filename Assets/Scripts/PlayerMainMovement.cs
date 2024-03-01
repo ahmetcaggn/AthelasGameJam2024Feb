@@ -139,8 +139,15 @@ public class PlayerMainMovement : MonoBehaviour
             {
                 _colorAdjustments.saturation.value += 35;   
             }
+            // col.GetComponent<ParticleSystem>().Play();
             Destroy(col.gameObject);
+            // StartCoroutine(DestroyObject(col.gameObject));
         }
+    }
+    IEnumerator DestroyObject(GameObject col)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(col);
     }
     
     
