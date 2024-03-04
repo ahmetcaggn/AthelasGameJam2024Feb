@@ -18,16 +18,22 @@ public class PlayerMainMovement : MonoBehaviour
     public LayerMask GroundLayer;
     public Transform GroundCheck;
     public float jumpSpeed = 18f;
+    private bool isFalling = false;
 
     public Animator anim;
 
     public Volume volume;
     private ColorAdjustments _colorAdjustments;
 
+    [SerializeField] AudioSource _audioSource;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         volume.profile.TryGet(out _colorAdjustments);
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.Play();
+        _audioSource.mute = true;
     }
 
     private void Update()
@@ -41,12 +47,36 @@ public class PlayerMainMovement : MonoBehaviour
         {
             // myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpSpeed);
             rb.AddForce(new Vector2(0f, 10f * jumpSpeed));
-            // anim.SetBool("IsJumping", true);
+            anim.SetTrigger("Jump");
+        }
+        
+        if (rb.velocity.y < -0.5f && !IsGrounded() && !isFalling)
+        {
+            anim.SetTrigger("Fall");
+            anim.SetBool("IsFalling",true);
+            isFalling = true;
         }
 
-        if (rb.velocity.y < -2)
+        if (IsGrounded())
         {
-            anim.SetBool("IsFalling",true);
+            anim.SetBool("IsFalling",false);
+            anim.SetBool("IsJumping", false);
+            anim.Play("idle");
+            isFalling = false;
+        }
+        
+        rb.AddForce(new Vector2(Horizontal * movementSpeed, 0f));
+        if (rb.velocity.x >= movementMaxSpeed)
+        {
+            _audioSource.mute = false;
+        }
+        else if (rb.velocity.x <= -movementMaxSpeed)
+        {
+            _audioSource.mute = false;
+        }
+        else
+        {
+            _audioSource.mute = true;
         }
 
         // if (IsGrounded())
@@ -77,8 +107,6 @@ public class PlayerMainMovement : MonoBehaviour
     public bool IsGrounded()
     {
         Collider2D colliders = Physics2D.OverlapCircle(GroundCheck.position, 0.3f, GroundLayer);
-        anim.SetBool("IsFalling",false);
-        anim.SetBool("IsJumping", false);
         return colliders;
     }
     
